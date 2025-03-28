@@ -1,0 +1,740 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "LLM event list by start time",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 10,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "frser-sqlite-datasource",
+        "uid": "begtytg7vwruoc"
+      },
+      "description": "LLM  vision events list",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "shades"
+          },
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "auto",
+              "wrapText": true
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "date(start,'localtime')"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Date"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "time(start,'localtime')"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Time"
+              },
+              {
+                "id": "custom.width",
+                "value": 98
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "summary 2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Summary"
+              },
+              {
+                "id": "custom.width",
+                "value": 272
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "description"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Description"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "key_frame"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Image"
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "pattern": "/.config/www/",
+                      "result": {
+                        "index": 0,
+                        "text": "https://your-home-assistant-url/local"
+                      }
+                    },
+                    "type": "regex"
+                  }
+                ]
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Camera Image",
+                    "url": "${__data.fields.key_frame}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "alt": "Not available",
+                  "title": "Camera",
+                  "type": "image"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Icon"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "pattern": "^Vehicle.*$",
+                      "result": {
+                        "index": 0,
+                        "text": "https://api.iconify.design/clarity/car-solid.svg?color=yellow"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Red [vV]ehicle.*$",
+                      "result": {
+                        "index": 1,
+                        "text": "https://api.iconify.design/clarity/car-solid.svg?color=red"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^White [vV]ehicle.*$",
+                      "result": {
+                        "index": 2,
+                        "text": "https://api.iconify.design/clarity/car-solid.svg?color=white"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Blue [vV]ehicle.*$",
+                      "result": {
+                        "index": 3,
+                        "text": "https://api.iconify.design/clarity/car-solid.svg?color=blue"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Delivery [vV]ehicle.*$",
+                      "result": {
+                        "index": 4,
+                        "text": "https://api.iconify.design/noto/delivery-truck.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Gray vehicle.*$",
+                      "result": {
+                        "index": 5,
+                        "text": "https://api.iconify.design/clarity/car-solid.svg?color=gray"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^SUV.*$",
+                      "result": {
+                        "index": 6,
+                        "text": "https://api.iconify.design/mdi/car-suv.svg?color=orange"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Car.*$",
+                      "result": {
+                        "index": 7,
+                        "text": "https://api.iconify.design/clarity/car-solid.svg?color=yellow"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Person.*$",
+                      "result": {
+                        "index": 8,
+                        "text": "https://api.iconify.design/fluent-emoji/man-walking.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Pickup [Tt]ruck.*$",
+                      "result": {
+                        "index": 9,
+                        "text": "https://api.iconify.design/openmoji/pickup-truck.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Garbage [Tt]ruck.*$",
+                      "result": {
+                        "index": 10,
+                        "text": "https://api.iconify.design/hugeicons/garbage-truck.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Truck.*$",
+                      "result": {
+                        "index": 11,
+                        "text": "https://api.iconify.design/openmoji/pickup-truck.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^No [Aa]ctivity.*$",
+                      "result": {
+                        "index": 12,
+                        "text": "https://api.iconify.design/fluent/chat-empty-12-regular.svg?color=yellow"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^FedEx van.*$",
+                      "result": {
+                        "index": 13,
+                        "text": "https://api.iconify.design/simple-icons/fedex.svg?color=red"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Delivery [vV]an.*$",
+                      "result": {
+                        "index": 14,
+                        "text": "https://api.iconify.design/carbon/van.svg?color=white"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Delivery [tT]ruck.*$",
+                      "result": {
+                        "index": 15,
+                        "text": "https://api.iconify.design/carbon/van.svg?color=brown"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^FedEx truck.*$",
+                      "result": {
+                        "index": 16,
+                        "text": "https://api.iconify.design/simple-icons/fedex.svg?color=red"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Dog.*$",
+                      "result": {
+                        "index": 17,
+                        "text": "https://api.iconify.design/fluent-emoji/dog.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Deer.*$",
+                      "result": {
+                        "index": 18,
+                        "text": "https://api.iconify.design/openmoji/deer.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Van.*$",
+                      "result": {
+                        "index": 19,
+                        "text": "https://api.iconify.design/carbon/van.svg?color=gray"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^People.*$",
+                      "result": {
+                        "index": 20,
+                        "text": "https://api.iconify.design/twemoji/people-holding-hands-medium-light-skin-tone.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Bicycle.*$",
+                      "result": {
+                        "index": 21,
+                        "text": "https://api.iconify.design/twemoji/bicycle.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Bicyclists.*$",
+                      "result": {
+                        "index": 22,
+                        "text": "https://api.iconify.design/twemoji/bicycle.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Cyclist.*$",
+                      "result": {
+                        "index": 23,
+                        "text": "https://api.iconify.design/twemoji/bicycle.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^White truck.*$",
+                      "result": {
+                        "index": 24,
+                        "text": "https://api.iconify.design/openmoji/pickup-truck.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Red truck.*$",
+                      "result": {
+                        "index": 25,
+                        "text": "https://api.iconify.design/openmoji/pickup-truck.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Individuals.*$",
+                      "result": {
+                        "index": 26,
+                        "text": "https://api.iconify.design/twemoji/people-holding-hands-medium-light-skin-tone.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Child.*$",
+                      "result": {
+                        "index": 27,
+                        "text": "https://api.iconify.design/openmoji/child-light-skin-tone.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Minivan.*$",
+                      "result": {
+                        "index": 28,
+                        "text": "https://api.iconify.design/mdi/van-utility.svg?color=gray"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Vintage car.*$",
+                      "result": {
+                        "index": 29,
+                        "text": "https://api.iconify.design/cbi/ford.svg?color=brown"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^My car.*$",
+                      "result": {
+                        "index": 30,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Activity.*$",
+                      "result": {
+                        "index": 31,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Walking.*$",
+                      "result": {
+                        "index": 32,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Don.*$",
+                      "result": {
+                        "index": 33,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Quiet.*$",
+                      "result": {
+                        "index": 34,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Driveway.*$",
+                      "result": {
+                        "index": 35,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^An Intriguing.*$",
+                      "result": {
+                        "index": 36,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Morning.*$",
+                      "result": {
+                        "index": 37,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Organizing.*$",
+                      "result": {
+                        "index": 38,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Evening.*$",
+                      "result": {
+                        "index": 39,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Observing.*$",
+                      "result": {
+                        "index": 40,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Casual.*$",
+                      "result": {
+                        "index": 41,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Family.*$",
+                      "result": {
+                        "index": 42,
+                        "text": "https://api.iconify.design/twemoji/people-holding-hands-medium-light-skin-tone.svg"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Moments.*$",
+                      "result": {
+                        "index": 43,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Conversations.*$",
+                      "result": {
+                        "index": 44,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": "^Shadows.*$",
+                      "result": {
+                        "index": 45,
+                        "text": "https://api.iconify.design/carbon/unknown.svg?color=green"
+                      }
+                    },
+                    "type": "regex"
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "image"
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 71
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "start"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 29,
+        "w": 14,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "lg",
+        "footer": {
+          "countRows": true,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "count"
+          ],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "start"
+          }
+        ]
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "frser-sqlite-datasource",
+            "uid": "begtytg7vwruoc"
+          },
+          "queryText": "SELECT start,summary,date(start,'localtime'),time(start,'localtime'),summary,description,key_frame from 'events' ORDER BY start desc\n\n\n",
+          "queryType": "table",
+          "rawQueryText": "SELECT start,summary,date(start,'localtime'),time(start,'localtime'),summary,description,key_frame from 'events' ORDER BY start desc\n\n\n",
+          "refId": "A",
+          "timeColumns": []
+        }
+      ],
+      "title": "Events",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "description": "",
+              "summary": "Title",
+              "summary 1": "Icon",
+              "summary 2": ""
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2025-04-18T17:44:01.646Z",
+    "to": "2025-05-04T17:44:01.646Z"
+  },
+  "timepicker": {
+    "hidden": true
+  },
+  "timezone": "browser",
+  "title": "LLM events",
+  "uid": "aegu1b277ksg5f",
+  "version": 37,
+  "weekStart": ""
+}
