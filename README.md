@@ -9,4 +9,10 @@ Here is a sample of the Grafana LLM event table panel as as dashboard in Home As
 
 You can filter on any column which gives you maximum flexibility in viewing historical events of your choosing.
 
+## **Prerequisites**
+
+1. Home Assistant
+2. LLM Vision integration
+3. Grafana Add-On
+
 ## **Installation**
